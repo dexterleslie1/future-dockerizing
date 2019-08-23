@@ -1,0 +1,6 @@
+±àÒë¾µÏñ
+docker build -t registry.cn-hangzhou.aliyuncs.com/future-common/redis .
+ÍÆËÍ¾µÏñ
+docker push registry.cn-hangzhou.aliyuncs.com/future-common/redis
+Æô¶¯ÈİÆ÷
+docker run --restart always -d --name redis -v /data/redis:/var/lib/redis -p6379:6379 registry.cn-hangzhou.aliyuncs.com/future-common/redis
