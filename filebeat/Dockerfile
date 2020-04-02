@@ -4,7 +4,8 @@ MAINTAINER dexterleslie@gmail.com
 
 RUN rm -f /etc/localtime && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-COPY filebeat-6.7.1-x86_64.rpm filebeat-6.7.1-x86_64.rpm
+RUN curl --silent --output filebeat-6.7.1-x86_64.rpm https://bucketxy.oss-cn-hangzhou.aliyuncs.com/filebeat-rpms/filebeat-6.7.1-x86_64.rpm
+
 RUN yum install filebeat-6.7.1-x86_64.rpm -y
 
 RUN rm -rf filebeat-6.7.1-x86_64.rpm

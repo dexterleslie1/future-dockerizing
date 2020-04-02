@@ -4,7 +4,8 @@ MAINTAINER dexterleslie@gmail.com
 
 RUN rm -f /etc/localtime && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-COPY redis-5.0.5-1.el7.remi.x86_64.rpm redis-5.0.5-1.el7.remi.x86_64.rpm
+RUN curl --silent --output redis-5.0.5-1.el7.remi.x86_64.rpm https://bucketxy.oss-cn-hangzhou.aliyuncs.com/redis-rpms/redis-5.0.5-1.el7.remi.x86_64.rpm
+
 RUN yum install redis-5.0.5-1.el7.remi.x86_64.rpm -y
 
 RUN rm -rf redis-5.0.5-1.el7.remi.x86_64.rpm

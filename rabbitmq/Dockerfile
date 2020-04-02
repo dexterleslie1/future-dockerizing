@@ -6,10 +6,9 @@ RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localt
 RUN localedef -c -f UTF-8 -i zh_CN zh_CN.utf8
 ENV LC_ALL zh_CN.utf8
 
-COPY erlang-21.3.4-1.el6.x86_64.rpm erlang-21.3.4-1.el6.x86_64.rpm
-COPY rabbitmq-server-3.7.14-1.el7.noarch.rpm rabbitmq-server-3.7.14-1.el7.noarch.rpm
-COPY rabbitmq_delayed_message_exchange-20171201-3.7.x.ez rabbitmq_delayed_message_exchange-20171201-3.7.x.ez
-
+RUN curl --silent --output erlang-21.3.4-1.el6.x86_64.rpm https://bucketxy.oss-cn-hangzhou.aliyuncs.com/rabbitmq-rpms/erlang-21.3.4-1.el6.x86_64.rpm
+RUN curl --silent --output rabbitmq-server-3.7.14-1.el7.noarch.rpm https://bucketxy.oss-cn-hangzhou.aliyuncs.com/rabbitmq-rpms/rabbitmq-server-3.7.14-1.el7.noarch.rpm
+RUN curl --silent --output rabbitmq_delayed_message_exchange-20171201-3.7.x.ez https://bucketxy.oss-cn-hangzhou.aliyuncs.com/rabbitmq-rpms/rabbitmq_delayed_message_exchange-20171201-3.7.x.ez
 
 #安装erlang
 RUN rpm -Uvh erlang-21.3.4-1.el6.x86_64.rpm

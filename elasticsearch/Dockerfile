@@ -4,7 +4,7 @@ MAINTAINER dexterleslie@gmail.com
 
 RUN rm -f /etc/localtime && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-COPY elasticsearch-6.7.1.rpm elasticsearch-6.7.1.rpm
+RUN curl --silent --output elasticsearch-6.7.1.rpm https://bucketxy.oss-cn-hangzhou.aliyuncs.com/elasticsearch-rpms/elasticsearch-6.7.1.rpm
 RUN yum install elasticsearch-6.7.1.rpm -y
 
 RUN rm -rf elasticsearch-6.7.1.rpm
@@ -14,7 +14,7 @@ RUN echo 'http.cors.enabled: true' >> /etc/elasticsearch/elasticsearch.yml
 RUN echo 'http.cors.allow-origin: "*"' >> /etc/elasticsearch/elasticsearch.yml
 
 RUN yum install -y unzip
-COPY elasticsearch-analysis-ik-6.7.1.zip elasticsearch-analysis-ik-6.7.1.zip
+RUN curl --silent --output elasticsearch-analysis-ik-6.7.1.zip https://bucketxy.oss-cn-hangzhou.aliyuncs.com/elasticsearch-rpms/elasticsearch-analysis-ik-6.7.1.zip
 RUN unzip elasticsearch-analysis-ik-6.7.1.zip -d /usr/share/elasticsearch/plugins/ik
 RUN rm -f elasticsearch-analysis-ik-6.7.1.zip
 
