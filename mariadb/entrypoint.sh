@@ -23,7 +23,12 @@ if [ "$i" = 0 ]; then
         exit 1
 fi
 
-${mysql[@]} < /docker-entrypoint-initdb.d/chat_voip_db.sql
+# 执行/docker-entrypoint-initdb.d目录下所有*.sql文件
+variableSQLFiles=$(find /docker-entrypoint-initdb.d -name "*.sql")
+for variableSQLFile in $variableSQLFiles; do
+  ${mysql[@]} < $variableSQLFile
+done
+
 echo "grant all privileges on *.* to root@'%' identified by '123456'" | ${mysql[@]}
 echo "flush privileges" | ${mysql[@]}
 
