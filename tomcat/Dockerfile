@@ -20,3 +20,7 @@ RUN sed -i '/pattern="%h %l %u %t &quot;%r&quot; %s %b"/a \\t-->' /usr/local/tom
 # https://www.thegeekstuff.com/2013/08/hide-tomcat-version-number/
 RUN mkdir -p /usr/local/tomcat/lib/org/apache/catalina/util
 RUN echo "server.info=Apache Server" > /usr/local/tomcat/lib/org/apache/catalina/util/ServerInfo.properties
+
+RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN echo "Asia/Shanghai" > /etc/timezone
+ENV TZ Asia/Shanghai
